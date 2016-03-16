@@ -1,0 +1,1 @@
+window.location.replace('http://localhost/Thiago-Pinheiro-Silva/class_code/facebook/view/index/index.html')
