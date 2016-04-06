@@ -3,19 +3,50 @@
 class Request
 {
 
+	private $method;
+	private $protocol;
+	private $ip;
 	private $resource;
 	private $parameters;
 	
 	function __construct()
 	{
-		$this->setRequest();
-	}
-
-	function setRequest()
-	{
-		$array = explode('?', $this->getURI());
+		$this->setMethod($_SERVER['REQUEST_METHOD']);
+		$this->setProtocol($_SERVER['SERVER_PROTOCOL']);
+		$this->setIp($_SERVER['SERVER_ADDR']);
+		$array = explode('?', $_SERVER["REQUEST_URI"]);
 		$this->setResource(explode('/', $array[0]));
 		$this->setParameters($array[1]);
+	}
+
+	function setMethod($method)
+	{
+		$this->method = $method;
+	}
+
+	function getMethod()
+	{
+		return $this->method;
+	}
+
+	function setProtocol($protocol)
+	{
+		$this->protocol = $protocol;
+	}
+
+	function getProtocol()
+	{
+		return $this->protocol;
+	}
+
+	function setIp($ip)
+	{
+		$this->ip = $ip;
+	}
+
+	function getIp()
+	{
+		return $this->ip;
 	}
 
 	function setResource($resource)
@@ -42,11 +73,6 @@ class Request
 	function getParameters()
 	{
 		return $this->parameters;
-	}
-
-	function getUri()
-	{
-		return $_SERVER["REQUEST_URI"];
 	}
 
 }
