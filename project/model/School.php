@@ -7,6 +7,13 @@ class School
 	private $address;
 	private $since;
 
+	public function __construct($name, $address, $since)
+	{
+		$this->setName($name);
+		$this->setAddress($address);
+		$this->setSince($since);
+	}
+
 	public function setName($name)
 	{
 		$this->name = $name;

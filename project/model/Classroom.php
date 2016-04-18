@@ -9,6 +9,15 @@ class Classroom
 	private $room;
 	private $period;
 
+	public function __construct($level, $year, $class, $room, $period)
+	{
+		$this->setLevel($level);
+		$this->setYear($year);
+		$this->setClass($class);
+		$this->setRoom($room);
+		$this->setPeriod($period);
+	}
+
 	public function setLevel($level)
 	{
 		$this->level = $level;
