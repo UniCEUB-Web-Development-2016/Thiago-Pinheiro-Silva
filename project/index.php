@@ -1,6 +1,10 @@
 <?php
 
 include 'lib/Request.php';
+include 'database/DBConnector.php';
+
+/*
+// Testando request
 
 $request = new Request();
 
@@ -15,4 +19,15 @@ foreach ($request->getParameters() as $parameter) {
 	}
 	$parameters .= ", ";
 }
-echo "Parameters: {".(chop($parameters, ", "))."}";
+echo "Parameters: {".(chop($parameters, ", "))."}";*/
+
+
+// Testando conexão de banco por PDO
+
+$db = new DBConnector('localhost', '3306', 'plantas', 'mysql', 'root', 'root');
+$con = $db->getConnection();
+
+$rs = $con->query('SELECT * FROM tb_especie');
+while($row = $rs->fetch(PDO::FETCH_OBJ)){
+	var_dump($row); 
+}
