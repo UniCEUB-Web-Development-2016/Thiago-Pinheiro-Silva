@@ -3,20 +3,20 @@
 class Request
 {
 
-	private $method;
 	private $protocol;
+	private $method;
 	private $ip;
 	private $resource;
 	private $parameters;
 	
-	function __construct()
+	function __construct($protocol, $method, $uri, $ip)
 	{
-		$this->setMethod($_SERVER['REQUEST_METHOD']);
-		$this->setProtocol($_SERVER['SERVER_PROTOCOL']);
-		$this->setIp($_SERVER['SERVER_ADDR']);
-		$array = explode('?', $_SERVER["REQUEST_URI"]);
+		$this->setProtocol($protocol);
+		$this->setMethod($method);
+		$array = explode('?', $uri);
 		$this->setResource(explode('/', $array[0]));
 		$this->setParameters($array[1]);
+		$this->setIp($ip);
 	}
 
 	function setMethod($method)
